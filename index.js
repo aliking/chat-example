@@ -8,10 +8,14 @@ app.get('/', function(req, res){
   res.sendFile(__dirname + '/index.html');
 });
 
+app.get('/send/:msg', function(req,res){
+  var msg = req.params.msg;
+  io.emit('message',  msg );
+  res.send('sent msg: ' + msg);
+});
+
 io.on('connection', function(socket){
-  socket.on('chat message', function(msg){
-    io.emit('chat message', msg);
-  });
+  io.emit('message', 'ready...');
 });
 
 http.listen(port, function(){
