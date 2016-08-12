@@ -15,7 +15,7 @@ app.get('/send/:msg', function(req,res){
 });
 
 app.post('/state', function(req, res) {
-  console.log(req.params);
+  console.log(req.body);
   res.send();
 });
 
