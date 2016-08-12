@@ -14,7 +14,7 @@ app.get('/send/:msg', function(req,res){
   res.send('sent msg: ' + msg);
 });
 
-app.get('/state', function(req, res) {
+app.post('/state', function(req, res) {
   console.log(req.params);
   res.send();
 });
