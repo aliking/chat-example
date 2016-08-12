@@ -18,7 +18,13 @@ app.get('/send/:msg', function(req,res){
 });
 
 app.post('/state', function(req, res) {
-  console.log(req.body);
+
+  var data = req.body.data.split(":");
+  var switchy = data[0];
+  var state = data[1];
+
+  console.log(switchy);
+  console.log(state);
   res.send();
 });
 
