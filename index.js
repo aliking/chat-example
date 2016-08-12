@@ -14,6 +14,11 @@ app.get('/send/:msg', function(req,res){
   res.send('sent msg: ' + msg);
 });
 
+app.get('/state', function(req, res) {
+  console.log(req.params);
+  res.send();
+});
+
 io.on('connection', function(socket){
   io.emit('message', 'ready...');
 });
