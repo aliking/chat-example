@@ -37,6 +37,22 @@ body {
 
 }
 
+#boxes td div {
+  width:50px;
+  height:30px;
+  color:lime;
+  background-color: green;
+  margin: 5px;
+}
+
+
+#boxes td{
+  font-family:Courier;
+  font-size:14px;
+  vertical-align:middle;
+  text-align:center;
+}
+
 .panel {
   border: 5px double lime;
   margin: 5px;
