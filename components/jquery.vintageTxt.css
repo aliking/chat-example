@@ -13,9 +13,8 @@
     width: 80%;
     padding: 10% 10%;
     color: #0F0;
-    font-family: "Courier",fixed,monospace;
-    font-size: 26px;
-    line-height: 28px;
+    font-size: inherit;
+    line-height: inherit;
     white-space: pre-wrap;
     text-shadow: 0 0 3px;
     text-transform: uppercase;

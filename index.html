@@ -8,12 +8,49 @@
   <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
   <script src="/components/jquery.vintageTxt.js"></script>
 
+  <script>
+  socket.on('countdown', function(){
+    $('#countdown').show();
+  });
+  </script>
 
   <script>
   var socket = io();
+  var msgQueue = [];
+  var typing = false;
+  var tSpeed = 100;
+  var lPause = 2000;
+
+  function printMsg() {
+    if(!typing) {
+      var msg = msgQueue.pop();
+
+      if(msg) {
+        typing = true;
+        if (typeof msg === 'string'){msg = [msg]};
+        console.log(msg);
+        $('#console').vintageTxt({
+          text: msg,
+          textSpeed: tSpeed,
+          linePause: lPause,
+          promptEnabled: false,
+          'onFinishedTyping' : function(){
+            tSpeed = 20;
+            lPause = 50;
+            typing = false;
+            setTimeout(function(){
+              printMsg();
+            }, 1000);
+          }
+        })
+      }
+    }
+  }
 
   socket.on('console', function(msg){
-    $('#console').vintageTxt('playMany',[[msg]] )
+    console.log(msg);
+    msgQueue.unshift(msg);
+    printMsg();
   });
   </script>
 </head>
@@ -35,93 +72,16 @@
       <div class="panel holder"></div>
       <div id='boxes' class='panel'>
 
-        <table align='center'>
-          <tr>
-            <td><div>
-              SFL
-            </div></td>
-            <td><div>
-              EEN
-            </div></td>
-            <td><div>
-              SFL
-            </div></td>
-            <td><div>
-              SFL
-            </div></td>
-          </tr>
-          <tr>
-            <td><div>
-              SFL
-            </div></td>
-            <td><div>
-              EEN
-            </div></td>
-            <td><div>
-              SFL
-            </div></td>
-            <td><div>
-              SFL
-            </div></td>
-          </tr>
-          <tr>
-            <td><div>
-              SFL
-            </div></td>
-            <td><div>
-              EEN
-            </div></td>
-            <td><div>
-              SFL
-            </div></td>
-            <td><div>
-              SFL
-            </div></td>
-          </tr>
-          <tr>
-            <td><div>
-              SFL
-            </div></td>
-            <td><div>
-              EEN
-            </div></td>
-            <td><div>
-              SFL
-            </div></td>
-            <td><div>
-              SFL
-            </div></td>
-          </tr>
-          <tr>
-            <td><div>
-              SFL
-            </div></td>
-            <td><div>
-              EEN
-            </div></td>
-            <td><div>
-              SFL
-            </div></td>
-            <td><div>
-              SFL
-            </div></td>
-          </tr>
-        </table>
       </div>
-      <div class="panel holder"></div></div>
+      <div id='console2' class="panel">
+
+      </div>
     </div>
-
-
 
     <script src="/components/planetary-monitor.js"></script>
     <script src="/components/box-panel.js"></script>
-    <script>
-    $('#console').vintageTxt({
-      text: ["System booting...","Preparing Launcher module..."],
-      textSpeed: 150,
-      linePause: 500,
-      promptEnabled: false
-    });
-    </script>
+
+    <script src="/components/nonsense-ticker.js"></script>
+
   </body>
   </html>
