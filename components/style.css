@@ -72,7 +72,7 @@ body {
 }
 
 #console {
-  font-size: 14px;
+  font-size: 18px;
   line-height: 20px;
 }
 
@@ -94,8 +94,6 @@ body {
     background: black;
     text-align: center;
     visibility: visible;;
-    padding-left: 40%;
-    padding-top:40%;
     z-index: -1;
 }
 
@@ -103,4 +101,21 @@ body {
   color:lime;
   font-size:80px;
   font-family: 'Courier New';
+}
+
+.blink {
+  animation-duration: 400ms;
+  animation-name: blink;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes blink {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
 }
