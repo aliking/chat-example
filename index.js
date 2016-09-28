@@ -116,7 +116,6 @@ app.get('/booted', function(req,res) {
 app.get('/reset', function(req,res) {
   message_state = 0;
   switch_state = '0000';
-  check_trigger();
   res.send();
 });
 
