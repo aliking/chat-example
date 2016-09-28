@@ -9,12 +9,6 @@
   <script src="/components/jquery.vintageTxt.js"></script>
 
   <script>
-  socket.on('countdown', function(){
-    $('#countdown').show();
-  });
-  </script>
-
-  <script>
   var socket = io();
   var msgQueue = [];
   var typing = false;
@@ -52,36 +46,66 @@
     msgQueue.unshift(msg);
     printMsg();
   });
+
+  socket.on('countdown', function(){
+    $('#countdown').css('z-index',100)
+    var count=11;
+
+    var counter=setInterval(timer, 1500);
+
+    function timer()
+    {
+      count=count-1;
+      if (count <= 0)
+      {
+         clearInterval(counter);
+         $('#countdown').css('padding',0)
+         document.getElementById("timer").innerHTML="ANIMOTO MARKETING VIDEOS LAUNCH ACTIVATED";
+         return;
+      }
+     document.getElementById("timer").innerHTML=count;
+    }
+
+
+  });
   </script>
 </head>
 <body>
-
-  <div id="columns">
-    <div id="column1">
-      <canvas id="planetary-monitor" class="panel" width="300" height="300"></canvas>
-      <div class="panel holder"></div>
-      <div class="panel holder"></div>
-    </div>
-
-    <div id="column2">
-      <div id="console" class="panel"></div>
-      <div class="panel holder"></div>
-    </div>
-
-    <div id="column3">
-      <div class="panel holder"></div>
-      <div id='boxes' class='panel'>
-
+  <div id='content'>
+    <div id="columns">
+      <div id="column1">
+        <canvas id="planetary-monitor" class="panel" width="300" height="300"></canvas>
+        <div class="panel holder"></div>
+        <div class="panel holder"></div>
       </div>
-      <div id='console2' class="panel">
 
+      <div id="column2">
+        <div id="console" class="panel"></div>
+        <div class="panel holder"></div>
+      </div>
+
+      <div id="column3">
+        <div class="panel holder"></div>
+        <div id='boxes' class='panel'>
+
+        </div>
+        <div id='console2' class="panel">
+
+        </div>
       </div>
     </div>
+    <div id="countdown">
+      <span id="timer" align="center"></span>
+    </div>
+  </div>
 
-    <script src="/components/planetary-monitor.js"></script>
-    <script src="/components/box-panel.js"></script>
 
-    <script src="/components/nonsense-ticker.js"></script>
+  <script src="/components/planetary-monitor.js"></script>
+  <script src="/components/box-panel.js"></script>
 
-  </body>
-  </html>
+  <script src="/components/nonsense-ticker.js"></script>
+
+
+
+</body>
+</html>

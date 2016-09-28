@@ -1,6 +1,6 @@
 .vtxt_wrapper {
     position: relative;
-    height: 500px;
+    height: 360px;
     background: #000;
     overflow: hidden;
 }
@@ -10,8 +10,8 @@
     top: 0px;
     left: 0px;
     height: 73%;
-    width: 80%;
-    padding: 10% 10%;
+    width: 95%;
+    padding: 10% 8%;
     color: #0F0;
     font-size: inherit;
     line-height: inherit;

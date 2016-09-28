@@ -61,7 +61,7 @@ function check_trigger() {
     if(message_state < 5){
       io.emit('console', message_list[message_state]);
     } else {
-      io.emit('countdown')
+      io.emit('countdown');
     }
   }
   console.log(message_state);
