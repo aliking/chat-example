@@ -65,6 +65,13 @@
       {
          clearInterval(counter);
          document.getElementById("timer").innerHTML="ANIMOTO MARKETING VIDEOS LAUNCH ACTIVATED";
+         $.ajax({
+       method: "POST",
+       url: "https://api.particle.io/v1/devices/410037000447343138333038/fire?access_token=1d76ac307fc2b77966ac373062befe895e7b605f"
+     })
+       .done(function( msg ) {
+         console.log(msg);
+       });
          return;
       }
      document.getElementById("timer").innerHTML=count;
