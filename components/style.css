@@ -9,36 +9,29 @@ body {
 #messages li:nth-child(odd) { background: #eee; }
 
 #content {
-    width: 640px;
-    height: 480px;
+    width: 100%;
+    height: 100%;
 }
 
 #columns {
   position: relative;
+  display: flex;
+  justify-content: space-between;
 }
 
-#column1 {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 30%;
-    height: 100%;
+.column {
+  display: flex;
+  flex-direction: column;
+  height: inherit;
+  justify-content: space-between;
 }
 
-#column2 {
-    position: absolute;
-    top: 0;
-    left: 30%;
-    width: 41%;
-    height: 100%;
+.skinny-column {
+    flex-shrink: 1;
 }
 
-#column3 {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 30%;
-    height: 100%;
+.fat-column {
+    flex-grow: 2;
 }
 
 #planetary-monitor {
@@ -61,7 +54,6 @@ body {
 .panel {
   border: 5px double lime;
   margin: 5px;
-  width: 95%;
   z-index: 3;
   border-radius: 5px;
   box-shadow: inset 0 -1px 0 0 #000, inset 0 1px 0 0 #000, 0 1px 0 0 #000, 0 -1px 0 0 #000;
@@ -72,19 +64,20 @@ body {
 }
 
 #console {
-  font-size: 18px;
-  line-height: 20px;
+    font-size: 3vw;
+    line-height: 3vw;
 }
 
 #console2 {
-  font-size: 11px;
-  line-height: 13px;
-  height: 232px;
-  z-index: 2;
+    font-size: 9px;
+    line-height: 10px;
+    height: 232px;
+    z-index: 2;
 }
 
 .holder {
-  height:100px;
+  min-height:100px;
+  flex-grow: 1;
 }
 
 #countdown {
@@ -101,6 +94,14 @@ body {
   color:lime;
   font-size:80px;
   font-family: 'Courier New';
+}
+
+button {
+    width: 60px;
+    height: 60px;
+    color: lime;
+    background: green;
+    margin: 20px;
 }
 
 .blink {

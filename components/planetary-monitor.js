@@ -21,8 +21,33 @@ if ( !window.requestAnimationFrame ) {
 
 var canvas = document.getElementById('planetary-monitor');
 var ctx = canvas.getContext('2d');
+
+var rect = canvas.parentNode.getBoundingClientRect();
+
+canvas.width = 165;//rect.width - 10;
+canvas.height = 165;//rect.width -10;
 var w = canvas.width;
 var h = canvas.height;
+
+var fromPercent = function(percent) {
+  var radius = w / 2;
+  return percent  * radius / 100;
+};
+
+//settable
+var sunRadius = fromPercent(20);
+var earthRadius = fromPercent(10);
+var earthOrbitRadius = fromPercent(80);
+var earthOrbitSpeed = 100;
+
+//calculated
+var mercuryRadius = earthRadius * 0.394;
+var mercuryOrbitRadius = earthOrbitRadius * 0.387;
+var mercuryOrbitSpeed = earthOrbitSpeed / 1.607;
+
+var venusRadius = earthRadius * 0.962;
+var venusOrbitRadius = earthOrbitRadius * 0.723;
+var venusOrbitSpeed = earthOrbitSpeed / 1.174;
 
 var circle = function(color, r) {
     ctx.fillStyle = color;
@@ -34,9 +59,9 @@ var circle = function(color, r) {
     ctx.fill();
 };
 
-var i = 0;
-var j = 0;
-var k = 0;
+var mercuryCounter = 0;
+var venusCounter = 0;
+var earthCounter = 0;
 var redraw = function() {
     ctx.save();
 
@@ -48,34 +73,38 @@ var redraw = function() {
     ctx.translate(w / 2, h / 2);
 
     // draw sun
-    circle('lime', 20);
+    circle('lime', sunRadius);
 
+    // draw planets
     // rotate + move along x
-    ctx.rotate(i / 100);
-    ctx.translate(100, 0);
+    ctx.rotate(mercuryCounter / mercuryOrbitSpeed);
+    ctx.translate(mercuryOrbitRadius, 0);
 
-    // draw planet
-    circle('lime', 10);
+    //draw planet
+    circle('lime', mercuryRadius);
 
-    ctx.translate(-100, 0);
-    ctx.rotate(0-(i/100));
+    //move and rotate back
+    ctx.translate(0 - mercuryOrbitRadius, 0);
+    ctx.rotate(0-(mercuryCounter/mercuryOrbitSpeed));
 
-    ctx.rotate(j/75);
-    ctx.translate(75,0);
-    circle('lime',7);
+    //venus
+    ctx.rotate(venusCounter/venusOrbitSpeed);
+    ctx.translate(venusOrbitRadius,0);
+    circle('lime',venusRadius);
 
-    ctx.translate(-75, 0);
-    ctx.rotate(0-(j/75));
+    ctx.translate(0 - venusOrbitRadius, 0);
+    ctx.rotate(0-(venusCounter/venusOrbitSpeed));
 
-    ctx.rotate(k/50);
-    ctx.translate(50,0);
-    circle('lime',5);
+    //earth
+    ctx.rotate(earthCounter/earthOrbitSpeed);
+    ctx.translate(earthOrbitRadius,0);
+    circle('lime',earthRadius);
 
     ctx.restore();
 
-    i++;
-    j++;
-    k++;
+    mercuryCounter++;
+    venusCounter++;
+    earthCounter++;
 
     window.requestAnimationFrame(redraw);
 };

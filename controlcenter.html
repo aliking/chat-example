@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+  <title>Contol Center</title>
+  <link rel="stylesheet" type="text/css" href="/components/style.css" />
+    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+  <script>
+  function msgState(val) {
+    $.ajax({
+  method: "GET",
+  url: "/msgState/" + val
+})
+  .done(function( msg ) {
+    console.log(msg);
+  });
+  }
+
+  function reset() {
+    $.ajax({
+  method: "GET",
+  url: "/reset"
+})
+  .done(function( msg ) {
+    console.log(msg);
+  });
+  }
+  </script>
+</head>
+<button onclick="msgState('0000')">0000</button>
+<button onclick="msgState('1100')">1100</button>
+<button onclick="msgState('1110')">1110</button>
+<button onclick="msgState('1111')">1111</button>
+<button onclick="reset()">reset</button>
+
+</body>
+</html>

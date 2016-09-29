@@ -83,6 +83,10 @@ app.get('/', function(req, res){
   res.sendFile(__dirname + '/index.html');
 });
 
+app.get('/controlcenter', function(req, res){
+  res.sendFile(__dirname + '/controlcenter.html');
+});
+
 app.get('/send/:msg', function(req,res){
   var msg = req.params.msg;
   io.emit('console',  msg );
@@ -116,6 +120,7 @@ app.get('/booted', function(req,res) {
 app.get('/reset', function(req,res) {
   message_state = 0;
   switch_state = '0000';
+  io.emit('reload');
   res.send();
 });
 

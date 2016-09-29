@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-  <title>Socket.IO chat</title>
+  <title>Launch Console</title>
   <link rel="stylesheet" type="text/css" href="/components/style.css" />
   <link rel="stylesheet" type="text/css" href="/components/jquery.vintageTxt.css" />
   <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
@@ -47,6 +47,11 @@
     printMsg();
   });
 
+  socket.on('reload', function(){
+    location.reload();
+  });
+
+
   socket.on('countdown', function(){
     $('#countdown').css('z-index',100)
     var count=11;
@@ -72,18 +77,20 @@
 <body>
   <div id='content'>
     <div id="columns">
-      <div id="column1">
-        <canvas id="planetary-monitor" class="panel" width="300" height="300"></canvas>
+      <div class="column skinny-column">
+        <div class="panel">
+          <canvas id="planetary-monitor" width="10"></canvas>
+        </div>
         <div class="panel holder"></div>
         <div class="panel holder"></div>
       </div>
 
-      <div id="column2">
+      <div class="column fat-column">
         <div id="console" class="panel"></div>
         <div class="panel holder"></div>
       </div>
 
-      <div id="column3">
+      <div class="column skinny-column">
         <div class="panel holder"></div>
         <div id='boxes' class='panel'>
 
@@ -98,7 +105,15 @@
     </div>
   </div>
 
+  <script>
+    // var myCanvas = $('#planetary-monitor');
+    // var planetsq = 300//$('.panel:first-of-type').width() - 10;
+    // myCanvas[0].width = planetsq;
+    // myCanvas[0].height = planetsq;
+    // myCanvas.css('height',planetsq);
+    // myCanvas.css('width',planetsq);
 
+  </script>
   <script src="/components/planetary-monitor.js"></script>
   <script src="/components/box-panel.js"></script>
 
