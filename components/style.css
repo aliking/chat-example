@@ -22,7 +22,7 @@ body {
 .column {
   display: flex;
   flex-direction: column;
-  height: inherit;
+  height: 470px;
   justify-content: space-between;
 }
 
