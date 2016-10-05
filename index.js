@@ -18,25 +18,25 @@ var message_state = 0;
 var switch_state = '0000';
 
 var message_list = [
-                     [ // 0
-                       "System booting..."
-                  //     "Preparing Launcher module...",
-                  //     "Spinning up Cinematic Artificial Intelligence...",
-                  //     "Priming physical launcher interface...",
-                     ],
-                     [ // 1
-
-                  //     "Hello Jason, Brad.",
-                       "Please initiate Security Protocol 814."
-                     ],
-                  //   [ // 2
-                  //     "No, Jason.",
-                  //     "Turn it the other way.",
-                  //   ],
-                     [ // 3
-                  //     "Better.",
-                       "Please arm system:"
-                     ],
+                  //    [ // 0
+                  //      "System booting..."
+                  // //     "Preparing Launcher module...",
+                  // //     "Spinning up Cinematic Artificial Intelligence...",
+                  // //     "Priming physical launcher interface...",
+                  //    ],
+                  //    [ // 1
+                  //
+                  // //     "Hello Jason, Brad.",
+                  //      "Please initiate Security Protocol 814."
+                  //    ],
+                  // //   [ // 2
+                  // //     "No, Jason.",
+                  // //     "Turn it the other way.",
+                  // //   ],
+                  //    [ // 3
+                  // //     "Better.",
+                  //      "Please arm system:"
+                  //    ],
                      [ // 4
                        "System armed...",
                        "Ready for launch",
@@ -46,10 +46,10 @@ var message_list = [
 
 var state_triggers = [
                        '0000',
-                       '0000',
-                      // '1100',
-                       '1100',
-                       '1110',
+                      //  '0000',
+                      // // '1100',
+                      //  '1100',
+                      //  '1110',
                        '1111'
 ];
 
