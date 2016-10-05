@@ -19,23 +19,23 @@ var switch_state = '0000';
 
 var message_list = [
                      [ // 0
-                       "System booting...",
-                       "Preparing Launcher module...",
-                       "Spinning up Cinematic Artificial Intelligence...",
-                       "Priming physical launcher interface...",
+                       "System booting..."
+                  //     "Preparing Launcher module...",
+                  //     "Spinning up Cinematic Artificial Intelligence...",
+                  //     "Priming physical launcher interface...",
                      ],
                      [ // 1
 
-                       "Hello Jason, Brad.",
+                  //     "Hello Jason, Brad.",
                        "Please initiate Security Protocol 814."
                      ],
-                     [ // 2
-                       "No, Jason.",
-                       "Turn it the other way.",
-                     ],
+                  //   [ // 2
+                  //     "No, Jason.",
+                  //     "Turn it the other way.",
+                  //   ],
                      [ // 3
-                       "Better.",
-                       "Please arm system:",
+                  //     "Better.",
+                       "Please arm system:"
                      ],
                      [ // 4
                        "System armed...",
@@ -47,7 +47,7 @@ var message_list = [
 var state_triggers = [
                        '0000',
                        '0000',
-                       '1100',
+                      // '1100',
                        '1100',
                        '1110',
                        '1111'
@@ -58,7 +58,7 @@ function check_trigger() {
   if(state_triggers[nextState] == switch_state){
     message_state += 1;
     console.log(message_list[message_state]);
-    if(message_state < 5){
+    if(message_state  + 1 < (state_triggers.length) ){
       io.emit('console', message_list[message_state]);
     } else {
       io.emit('countdown');
