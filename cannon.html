@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+<head>
+  <title>Cannon</title>
+  <link rel="stylesheet" type="text/css" href="/components/style.css" />
+    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+  <script>
+  function fire() {
+    $.ajax({
+       method: "POST",
+       url: "https://api.particle.io/v1/devices/410037000447343138333038/fire?access_token=7410295a5db9b8e795122fff179dbb462f3a8f71"
+     })
+       .done(function( msg ) {
+         console.log(msg);
+       });
+  }
+  </script>
+</head>
+<button onclick="fire()">FIRE!!!</button>
+</body>
+</html>

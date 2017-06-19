@@ -87,6 +87,10 @@ app.get('/controlcenter', function(req, res){
   res.sendFile(__dirname + '/controlcenter.html');
 });
 
+app.get('/cannon', function(req, res){
+  res.sendFile(__dirname + '/cannon.html');
+});
+
 app.get('/send/:msg', function(req,res){
   var msg = req.params.msg;
   io.emit('console',  msg );
